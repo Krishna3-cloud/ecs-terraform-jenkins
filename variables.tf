@@ -1,5 +1,5 @@
 variable "aws_region" {
-  default     = "ap-northeast-1"
+  default     = "eu-west-1"
   description = "aws region where our resources going to create choose"
   #replace the region as suits for your requirement
 }
