@@ -16,6 +16,7 @@ data "template_file" "testapp" {
 
 resource "aws_ecs_task_definition" "test-def" {
   family                   = "testapp-task"
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
@@ -42,5 +43,5 @@ resource "aws_ecs_service" "test-service" {
     container_port   = var.app_port
   }
 
-  depends_on = [aws_alb_listener.testapp]
+  depends_on = [aws_alb_listener.testapp, aws_iam_role_policy_attachment.ecs_task_execution_role]
 }
