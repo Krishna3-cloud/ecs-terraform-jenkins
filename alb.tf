@@ -8,7 +8,7 @@ resource "aws_alb" "alb" {
 
 resource "aws_alb_target_group" "myapp-tg" {
   name        = "myapp-tg"
-  port        = 3000
+  port        = 80
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.test-vpc.id
